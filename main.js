@@ -51,17 +51,36 @@ function operate(operator, var1, var2) {
 }
 
 
-/// Controler Code
+/// Controller Code
 
 
 const digits = document.querySelectorAll(".digits button");
+const operators = document.querySelectorAll(".operators button");
 const display = document.querySelector("#display");
+
+let wasOperatorAssigned = false;
 
 
 digits.forEach((digit) => {
     digit.addEventListener("click", (event) => {
         const digitNumber = event.target.textContent;
-        variable1 += digitNumber;
-        display.textContent = variable1;
+
+        if (!wasOperatorAssigned) {
+            variable1 += digitNumber;
+            display.textContent = variable1;
+        } else {
+            variable2 += digitNumber;
+            display.textContent = `${variable1} ${operator} ${variable2}`;
+        }
+    });
+});
+
+
+operators.forEach((operatorButton) => {
+    operatorButton.addEventListener("click", (event) => {
+        const operatorType = event.target.textContent;
+        operator = operatorType;
+        display.textContent = `${variable1} ${operator}`;
+        wasOperatorAssigned = true;
     });
 });
