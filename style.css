@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: beige;
+}
+
+#display {
+    padding: 10px;
+    background-color: aliceblue;
+    margin: 10px;
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    overflow: wrap;
+    gap: 5px;
+    margin: 10px;
+}
+
+.digits,
+.operators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.container-a {
+    display: flex;
+    gap: 2px;
+}
+
+.container-b {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.operators button {
+    width: 40px;
+    text-align: center;
+}

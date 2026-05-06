@@ -40,7 +40,7 @@ function operate(operator, var1, var2) {
         case "-":
             return subtract(parsedVar1, parsedVar2);
             break;
-        case "*":
+        case "×":
             return multiply(parsedVar1, parsedVar2);
             break;
         case "/":
@@ -111,7 +111,7 @@ equalsButton.addEventListener("click", (event) => {
 });
 
 clearButton.addEventListener("click", (event) => {
-    display.textContent = "Enter a number followed by an operator then another number";
+    display.textContent = "Display";
     variable1 = "";
     operator = "";
     variable2 = "";
