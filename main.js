@@ -44,7 +44,7 @@ function operate(operator, var1, var2) {
             return multiply(parsedVar1, parsedVar2);
             break;
         case "/":
-            return divide(parsedVar1, parsedVar2);
+            return divide(parsedVar1, parsedVar2).toFixed(2);
             break;
         default:
             return "Invalid operator. Press Clear.";
