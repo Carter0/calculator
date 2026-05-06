@@ -47,7 +47,7 @@ function operate(operator, var1, var2) {
             return divide(parsedVar1, parsedVar2);
             break;
         default:
-            return "Invalid operator";
+            return "Invalid operator. Press Clear.";
     }
 }
 
@@ -62,6 +62,7 @@ const equalsButton = document.querySelector("#equalsButton");
 const clearButton = document.querySelector("#clearButton");
 
 let wasOperatorAssigned = false;
+let wasVariable2Assigned = false;
 
 
 digits.forEach((digit) => {
@@ -73,6 +74,7 @@ digits.forEach((digit) => {
             display.textContent = variable1;
         } else {
             variable2 += digitNumber;
+            wasVariable2Assigned = true;
             display.textContent = `${variable1} ${operator} ${variable2}`;
         }
     });
@@ -82,9 +84,19 @@ digits.forEach((digit) => {
 operators.forEach((operatorButton) => {
     operatorButton.addEventListener("click", (event) => {
         const operatorType = event.target.textContent;
-        operator = operatorType;
-        display.textContent = `${variable1} ${operator}`;
-        wasOperatorAssigned = true;
+
+        if (!wasVariable2Assigned) {
+            operator = operatorType;
+            display.textContent = `${variable1} ${operator}`;
+            wasOperatorAssigned = true;
+        } else {
+            const output = operate(operator, variable1, variable2);
+            variable1 = output;
+            operator = operatorType;
+            display.textContent = `${variable1} ${operator}`;
+            variable2 = "";
+            wasOperatorAssigned = true;
+        }
     });
 });
 
@@ -95,6 +107,7 @@ equalsButton.addEventListener("click", (event) => {
     operator = "";
     variable2 = "";
     wasOperatorAssigned = false;
+    wasVariable2Assigned = false;
 });
 
 clearButton.addEventListener("click", (event) => {
@@ -103,4 +116,5 @@ clearButton.addEventListener("click", (event) => {
     operator = "";
     variable2 = "";
     wasOperatorAssigned = false;
+    wasVariable2Assigned = false;
 });
