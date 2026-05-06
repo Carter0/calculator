@@ -1,3 +1,6 @@
+/// Calculator Logic
+
+
 function add(a, b) {
     return a + b;
 }
@@ -46,3 +49,19 @@ function operate(operator, var1, var2) {
             return "Invalid operator";
     }
 }
+
+
+/// Controler Code
+
+
+const digits = document.querySelectorAll(".digits button");
+const display = document.querySelector("#display");
+
+
+digits.forEach((digit) => {
+    digit.addEventListener("click", (event) => {
+        const digitNumber = event.target.textContent;
+        variable1 += digitNumber;
+        display.textContent = variable1;
+    });
+});
